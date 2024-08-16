@@ -13,11 +13,10 @@ const homeLink = document.getElementById("hLink");
 const createLink = document.getElementById("cLink");
 
 homeLink.addEventListener("click", () => {
-    console.log();
- toggleMenu("home");
+  console.log();
+  toggleMenu("home");
 });
 createLink.addEventListener("click", () => {
-  
   toggleMenu("activity");
 });
 
@@ -35,6 +34,25 @@ function toggleMenu(page) {
   }
 }
 
+const onlineRadio = document.getElementById("online");
+const physicalRadio = document.getElementById("physical");
+const onlineLinkTextArea = document.getElementById("online-link-textarea");
+const physicaladdressTextArea = document.getElementById(
+  "physical-address-textarea"
+);
 
+onlineRadio.addEventListener("change", () => {
+  if (onlineRadio.checked) {
+    onlineLinkTextArea.style.display = "block";
+    physicaladdressTextArea.style.display = "none";
+  }
+});
 
-toggleMenu("home")
+physicalRadio.addEventListener("change", () => {
+  if (physicalRadio.checked) {
+    onlineLinkTextArea.style.display = "none";
+    physicaladdressTextArea.style.display = "block";
+  }
+});
+
+toggleMenu("home");
