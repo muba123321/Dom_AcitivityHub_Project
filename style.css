@@ -29,3 +29,50 @@ header {
 .menu_links:hover{
     background-color: #555;
 }
+
+main {
+    padding: 20px;
+}
+
+#home_page, 
+#activity_page{
+    display: none;
+}
+
+#home_page.active, #activity_page.active {
+    display: block;
+}
+
+#activity_form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#activity_form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#activity_form input, #activity_form textarea, #activity_form select{
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#activity_form button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#activity_form button:hover {
+    background-color: #218838;
+}

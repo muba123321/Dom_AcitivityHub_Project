@@ -15,10 +15,114 @@
     <header>
       <nav id="menuBar">
         <div id="hLink">Home</div>
-        <div id="cLink">
-            <i class="fas fa-plus"></i>Create Activities</div>
+        <div id="cLink"><i class="fas fa-plus"></i>Create Activities</div>
       </nav>
     </header>
+
+    <main>
+      <section id="home_page">
+        <h1>View All Activities</h1>
+        <div id="activity_List">
+          <p>
+            No activities yet. <br />
+            Create your First Acitivity!!!
+          </p>
+
+          <button id="add_activity">
+            <i class="fas fa-plus"></i> Add Activity
+          </button>
+        </div>
+      </section>
+
+      <section id="activity_page">
+        <h1>Lets Get Your Activity Started</h1>
+        <form id="activity_form">
+          <div>
+            <label for="activity-image">Upload Image:</label>
+            <input
+              type="file"
+              id="activity-image"
+              name="activity-image"
+              accept="image/*"
+              required
+            />
+          </div>
+          <div>
+            <label for="activity-name">Activity Name:</label>
+            <input
+              type="text"
+              id="activity-name"
+              name="activity-name"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div>
+            <label for="phone">Phone Number:</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              pattern="[0-9]{10}"
+            />
+          </div>
+
+          <div>
+            <label>Activity Location:</label>
+            <input
+              type="radio"
+              id="online"
+              name="location"
+              value="online"
+              required
+            />
+            <label for="online">Online</label>
+            <input
+              type="radio"
+              id="physical"
+              name="location"
+              value="physical"
+            />
+            <label for="physical">Physical Location</label>
+          </div>
+
+          <div id="online-link-container" style="display: none">
+            <label for="online-link">Zoom Link:</label>
+            <input type="url" id="online-link" name="online-link" />
+          </div>
+
+          <div id="physical-address-container" style="display: none">
+            <label for="address">Physical Address:</label>
+            <input type="text" id="address" name="address" />
+          </div>
+
+          <div>
+            <label for="activity-type">Type of Activity:</label>
+            <select id="activity-type" name="activity-type" required>
+              <option value="">--Select an activity type--</option>
+              <option value="workshop">Workshop</option>
+              <option value="webinar">Webinar</option>
+              <option value="meeting">Meeting</option>
+              <option value="networking">Networking</option>
+            </select>
+          </div>
+
+          <label for="activity-description">Description:</label>
+          <textarea
+            id="activity-description"
+            name="activity-description"
+            required
+          ></textarea>
+          <button type="submit">Save Activity</button>
+        </form>
+      </section>
+    </main>
 
     <script src="index.js"></script>
   </body>
