@@ -20,108 +20,140 @@
     </header>
 
     <main>
-      <section id="home_page">
-        <h1>View All Activities</h1>
-        <div id="activity_List">
-          <p>
-            No activities yet. <br />
-            Create your First Acitivity!!!
-          </p>
+      <aside id="leftSidebar">
+        <h2>Groups</h2>
+        <ul>
+          <li>Group 1</li>
+          <li>Group 2</li>
+          <li>Group 3</li>
+        </ul>
+      </aside>
 
-          <button id="add_activity">
-            <i class="fas fa-plus"></i> Add Activity
-          </button>
-        </div>
+      <section id="contentArea">
+        <section id="home_page">
+          <h1>VIEW ALL ACTIVITIES</h1>
+          <div id="activity_List">
+            <ul id="listed_activities">
+              <!-- Activities will be listed here -->
+            </ul>
+          </div>
+        </section>
+
+        <section id="activity_page">
+          <h1>LETS GET YOU STARTED</h1>
+          <form id="activity_form">
+            <div>
+              <label for="activity-image">Upload Image:</label>
+              <input
+                type="file"
+                id="activity-image"
+                name="activity-image"
+                accept="image/*"
+              />
+            </div>
+            <div>
+              <label for="activity-name">Activity Name:</label>
+              <input
+                type="text"
+                id="activity-name"
+                name="activity-name"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email"/>
+            </div>
+
+            <div>
+              <label for="phone">Phone Number:</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+              />
+            </div>
+
+            <div>
+              <label for="activity-date">Date:</label>
+              <input
+                type="date"
+                id="activity-date"
+                name="activity-date"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="activity-time">Time:</label>
+              <input
+                type="time"
+                id="activity-time"
+                name="activity-time"
+                required
+              />
+            </div>
+
+            <div>
+              <label>Activity Location:</label>
+              <input
+                type="radio"
+                id="online"
+                name="location"
+                value="online"
+                required
+              />
+              <label for="online">Online</label>
+              <input
+                type="radio"
+                id="physical"
+                name="location"
+                value="physical"
+              />
+              <label for="physical">Physical Location</label>
+            </div>
+
+            <div id="online-link-textarea" style="display: none">
+              <label for="online-link">Zoom Link:</label>
+              <input type="url" id="online-link" name="online-link" />
+            </div>
+
+            <div id="physical-address-textarea" style="display: none">
+              <label for="address">Physical Address:</label>
+              <input type="text" id="address" name="address" />
+            </div>
+
+            <div>
+              <label for="activity-type">Type of Activity:</label>
+              <select id="activity-type" name="activity-type" required>
+                <option value="">--Select an activity type--</option>
+                <option value="workshop">Workshop</option>
+                <option value="webinar">Webinar</option>
+                <option value="meeting">Meeting</option>
+                <option value="networking">Networking</option>
+              </select>
+            </div>
+
+            <label for="activity-description">Description:</label>
+            <textarea
+              id="activity-description"
+              name="activity-description"
+              required
+            ></textarea>
+            <button type="submit">Save Activity</button>
+          </form>
+        </section>
       </section>
 
-      <section id="activity_page">
-        <h1>Lets Get Your Activity Started</h1>
-        <form id="activity_form">
-          <div>
-            <label for="activity-image">Upload Image:</label>
-            <input
-              type="file"
-              id="activity-image"
-              name="activity-image"
-              accept="image/*"
-              required
-            />
-          </div>
-          <div>
-            <label for="activity-name">Activity Name:</label>
-            <input
-              type="text"
-              id="activity-name"
-              name="activity-name"
-              required
-            />
-          </div>
-
-          <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-
-          <div>
-            <label for="phone">Phone Number:</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              required
-              pattern="[0-9]{10}"
-            />
-          </div>
-
-          <div>
-            <label>Activity Location:</label>
-            <input
-              type="radio"
-              id="online"
-              name="location"
-              value="online"
-              required
-            />
-            <label for="online">Online</label>
-            <input
-              type="radio"
-              id="physical"
-              name="location"
-              value="physical"
-            />
-            <label for="physical">Physical Location</label>
-          </div>
-
-          <div id="online-link-textarea" style="display: none">
-            <label for="online-link">Zoom Link:</label>
-            <input type="url" id="online-link" name="online-link" />
-          </div>
-
-          <div id="physical-address-textarea" style="display: none">
-            <label for="address">Physical Address:</label>
-            <input type="text" id="address" name="address" />
-          </div>
-
-          <div>
-            <label for="activity-type">Type of Activity:</label>
-            <select id="activity-type" name="activity-type" required>
-              <option value="">--Select an activity type--</option>
-              <option value="workshop">Workshop</option>
-              <option value="webinar">Webinar</option>
-              <option value="meeting">Meeting</option>
-              <option value="networking">Networking</option>
-            </select>
-          </div>
-
-          <label for="activity-description">Description:</label>
-          <textarea
-            id="activity-description"
-            name="activity-description"
-            required
-          ></textarea>
-          <button type="submit">Save Activity</button>
-        </form>
-      </section>
+      <aside id="rightSidebar">
+        <h2>Contacts</h2>
+        <ul>
+          <li>Contact 1</li>
+          <li>Contact 2</li>
+          <li>Contact 3</li>
+        </ul>
+      </aside>
     </main>
 
     <script src="index.js"></script>
