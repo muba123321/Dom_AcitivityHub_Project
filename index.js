@@ -13,7 +13,6 @@ const homeLink = document.getElementById("hLink");
 const createLink = document.getElementById("cLink");
 
 homeLink.addEventListener("click", () => {
-  console.log();
   toggleMenu("home");
 });
 createLink.addEventListener("click", () => {
@@ -137,8 +136,8 @@ function updateActivityList() {
   activityList.innerHTML = "";
 
   if (activities.length === 0) {
-    activityList.innerHTML = `<p>No activities yet. <br />Click the create Activities button on the top Menu to <br />Create your First Activity!!!</p>
-    <div style="display: flex; justify-content: center; align-items: center; width: 600px; height: 400px; margin: 0 auto; border: solid black 1px">
+    activityList.innerHTML = `<p>No activities yet. <br />Click the create Activities button on the top menu or the add button below <br />Create your First Activity!!!</p>
+    <div id= "add_button" style="display: flex; justify-content: center; align-items: center; width: 600px; height: 400px; margin: 0 auto; border: solid black 1px">
       <i class='fas fa-plus' style="font-size: 90px;"></i>
     </div>`;
     return;
@@ -193,6 +192,7 @@ function updateActivityList() {
     activityList.appendChild(li);
   });
 }
+
 function deleteActivity(index) {
   const activities = JSON.parse(localStorage.getItem("activities")) || [];
   activities.splice(index, 1);
@@ -202,4 +202,12 @@ function deleteActivity(index) {
 
 // Initialize
 updateActivityList();
+
+const addbutton = document.querySelector("#add_button");
+
+addbutton.addEventListener("click", () => {
+  toggleMenu("activity");
+});
+
+
 toggleMenu("home");
