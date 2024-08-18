@@ -55,7 +55,7 @@ physicalRadio.addEventListener("change", () => {
   }
 });
 
-// Form submission
+// Creating Form submission functionality with event listner
 const activityForm = document.getElementById("activity_form");
 const activityList = document.getElementById("listed_activities");
 
@@ -81,15 +81,18 @@ activityForm.addEventListener("submit", (e) => {
     : "";
   const image = document.getElementById("activity-image").files[0];
 
-  // Image validation
-  if (image) {
+  // Image validation we ensure to accept only jpeg and png only
+  if (!image) {
+    alert("Please upload an image for the activity.");
+    return;
+  }
+
     const validImageTypes = ["image/jpeg", "image/png"];
-    if (!validImageTypes.includes(image.type)) {
+    if (!validImageTypes.includes(image.type) ) {
       alert("Please upload a valid image file (JPEG or PNG).");
       return;
     }
-  }
-
+ 
   // Email validation
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!emailPattern.test(email)) {
@@ -140,18 +143,29 @@ function updateActivityList() {
     <div id= "add_button" style="display: flex; justify-content: center; align-items: center; width: 600px; height: 400px; margin: 0 auto; border: solid black 1px">
       <i class='fas fa-plus' style="font-size: 90px;"></i>
     </div>`;
+
+    // the button functionality is called after the updateActivityList function is initialized
+    // This is to add a new activity after making sure the widget is built on the DOM when activities.length === 0.
+
+    const addButton = document.querySelector("#add_button");
+
+    if (addButton) {
+      addButton.addEventListener("click", () => {
+        toggleMenu("activity");
+      });
+    }
     return;
   }
 
   activities.forEach((activity, index) => {
     const li = document.createElement("li");
 
-    // Create the activity details
+    // This is to create activity name
     const name = document.createElement("h3");
     name.textContent = activity.name;
     li.appendChild(name);
 
-    // Create an image element if there's an image
+    // This is to create an image element if there's an image
     if (activity.imageUrl) {
       const img = document.createElement("img");
       img.src = activity.imageUrl;
@@ -160,18 +174,22 @@ function updateActivityList() {
       li.appendChild(img);
     }
 
+    // This is to create activity description
     const description = document.createElement("p");
     description.textContent = `Description: ${activity.description}`;
     li.appendChild(description);
 
+    // This is to create activity type
     const type = document.createElement("p");
     type.textContent = `Type: ${activity.type}`;
     li.appendChild(type);
 
+    // This is to create activity date and time
     const dateTime = document.createElement("p");
     dateTime.textContent = `Date: ${activity.date} Time: ${activity.time}`;
     li.appendChild(dateTime);
 
+    // This is to create activity location either online or physical location
     const location = document.createElement("p");
     if (activity.online) {
       location.textContent = `Location: Online (Zoom Link: ${activity.zoomlink})`;
@@ -180,7 +198,7 @@ function updateActivityList() {
     }
     li.appendChild(location);
 
-    // Create a delete button
+    // This is to create a delete button
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.style.marginLeft = "10px";
@@ -192,7 +210,7 @@ function updateActivityList() {
     activityList.appendChild(li);
   });
 }
-
+// Delete button to remove activities from the list created
 function deleteActivity(index) {
   const activities = JSON.parse(localStorage.getItem("activities")) || [];
   activities.splice(index, 1);
@@ -202,12 +220,5 @@ function deleteActivity(index) {
 
 // Initialize
 updateActivityList();
-
-const addbutton = document.querySelector("#add_button");
-
-addbutton.addEventListener("click", () => {
-  toggleMenu("activity");
-});
-
 
 toggleMenu("home");
