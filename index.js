@@ -81,18 +81,18 @@ activityForm.addEventListener("submit", (e) => {
     : "";
   const image = document.getElementById("activity-image").files[0];
 
-  // Image validation we ensure to accept only jpeg and png only
+  // Image validation we ensure the image is not empty and to accept only jpeg and png only
   if (!image) {
     alert("Please upload an image for the activity.");
     return;
   }
 
-    const validImageTypes = ["image/jpeg", "image/png"];
-    if (!validImageTypes.includes(image.type) ) {
-      alert("Please upload a valid image file (JPEG or PNG).");
-      return;
-    }
- 
+  const validImageTypes = ["image/jpeg", "image/png"];
+  if (!validImageTypes.includes(image.type)) {
+    alert("Please upload a valid image file (JPEG or PNG).");
+    return;
+  }
+
   // Email validation
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!emailPattern.test(email)) {
