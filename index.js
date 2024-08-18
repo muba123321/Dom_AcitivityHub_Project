@@ -157,6 +157,9 @@ function updateActivityList() {
     return;
   }
 
+  // Create a DocumentFragment for efficient DOM updates to store elements on the DOM before actually display in the homepage after creating an activity. 
+  const fragment = document.createDocumentFragment();
+
   activities.forEach((activity, index) => {
     const li = document.createElement("li");
 
@@ -170,7 +173,6 @@ function updateActivityList() {
       const img = document.createElement("img");
       img.src = activity.imageUrl;
       img.alt = activity.name;
-
       li.appendChild(img);
     }
 
@@ -207,8 +209,9 @@ function updateActivityList() {
     });
     li.appendChild(deleteBtn);
 
-    activityList.appendChild(li);
+    fragment.appendChild(li);
   });
+  activityList.appendChild(fragment);
 }
 // Delete button to remove activities from the list created
 function deleteActivity(index) {
@@ -222,3 +225,14 @@ function deleteActivity(index) {
 updateActivityList();
 
 toggleMenu("home");
+
+// Browser Object Model to Check online status
+function checkOnlineStatus() {
+  if (!navigator.onLine) {
+    alert("You are offline! Some features may not work.");
+  }
+}
+
+window.addEventListener("load", checkOnlineStatus);
+window.addEventListener("online", checkOnlineStatus);
+window.addEventListener("offline", checkOnlineStatus);
